@@ -15,16 +15,16 @@
         <br>
         <p data-th-text="*{conditions.get(0).description}"></p>
         <br>
-        <p data-th-text="*{temperature}"></p>
+        <p><span data-th-text="*{temperature}"></span> <span data-th-text="${units}"></span></p>
         <br>
         Weather Date time:
-        <p data-th-text="*{#dates.format(weatherTimeStamp * 1000, 'dd-MM-yyyy HH:mm:ss')}"></p>
+        <p data-th-text="*{#dates.format(weatherTimeStamp * 1000, 'dd-MM-yyyy h:mm:ss a')}"></p>
         <br>
         Sunrise Date time:
-        <p data-th-text="*{#dates.format(sunriseTimeStamp * 1000, 'dd-MM-yyyy HH:mm:ss')}"></p>
+        <p data-th-text="*{#dates.format(sunriseTimeStamp * 1000, 'dd-MM-yyyy h:mm:ss a')}"></p>
         <br>
         Sunset Date time:        
-        <p data-th-text="*{#dates.format(sunsetTimeStamp * 1000 , 'dd-MM-yyyy HH:mm:ss')}"></p>
+        <p data-th-text="*{#dates.format(sunsetTimeStamp * 1000 , 'dd-MM-yyyy h:mm:ss a')}"></p>
     </div>
 </body>
 </html>

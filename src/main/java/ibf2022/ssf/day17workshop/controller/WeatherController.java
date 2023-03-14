@@ -16,7 +16,7 @@ import ibf2022.ssf.day17workshop.service.WeatherService;
 @Controller
 @RequestMapping(path = "/weather")
 public class WeatherController {
-    
+
     @Autowired
     private WeatherService wService;
 
@@ -24,6 +24,19 @@ public class WeatherController {
     public String getWeather(@RequestParam(required=true) String city, @RequestParam(defaultValue = "metric", required=false) String units, Model model) throws IOException {
         Optional<Weather> weather = wService.getWeather(city, units);
         model.addAttribute("weather", weather.get());
+        if (units.equals("metric")) {
+            model.addAttribute("units", MeasurementValues.metric);
+        } else if (units.equals("standard")) {
+            model.addAttribute("units", MeasurementValues.standard);
+        } else if (units.equals("imperial")) {
+            model.addAttribute("units", MeasurementValues.imperial);
+        }
         return "weather";
     }
+}
+
+class MeasurementValues {
+    public static final String metric = "Celsius";
+    public static final String standard = "Kelvin";
+    public static final String imperial = "Fahrenheit";
 }
